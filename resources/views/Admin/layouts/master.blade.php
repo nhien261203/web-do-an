@@ -184,6 +184,7 @@
                                             <i class="metismenu-icon"></i>Quản lý người dùng
                                         </a>
                                     </li>
+                                    
                                     <li>
                                         <a href="/quantri/order" class="{{ (request()->segment(2) == 'order') ? 'mm-active' : '' }}">
                                             <i class="metismenu-icon"></i>Quản lý đơn hàng
@@ -209,6 +210,12 @@
                                             <i class="metismenu-icon"></i>Quản lý slider
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="/quantri/logs" class="{{ (request()->segment(2) == 'logs') ? 'mm-active' : '' }}">
+                                            <i class="metismenu-icon"></i>Danh sách action admin
+                                        </a>
+                                    </li>
+                                    
                                 </ul>
                             </li>
                         </ul>

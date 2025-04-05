@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Admin\ProductImage\ProductImageController;
 use App\Http\Controllers\Admin\Slider\SliderController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\Web\Account\AccountController;
 use App\Http\Controllers\Web\Blog\BlogController;
 use App\Http\Controllers\Web\Cart\CartController;
@@ -126,6 +127,8 @@ Route::group(['prefix' => '/quantri', "middleware" => "checkadmin"], function ()
     Route::group(['prefix' => '/dashboard'], function () {
         Route::get('/', [DashboardController::class, "index"]);
     });
+
+    Route::get('/logs', [LogController::class, 'index']);
 
     Route::group(['prefix' => '/product'], function () {
         Route::get('/', [ProductController::class, "index"]);

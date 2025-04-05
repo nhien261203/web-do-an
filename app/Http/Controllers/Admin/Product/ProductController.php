@@ -5,16 +5,28 @@ namespace App\Http\Controllers\Admin\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
 use App\Http\Requests\Product\EditProductRequest;
+
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\LogService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    protected $logService;
+
+    // Inject LogService vào controller
+    public function __construct(LogService $logService)
+    {
+        $this->logService = $logService;
+    }
+
     public function index(Request $request)
     {
         //
@@ -112,6 +124,19 @@ class ProductController extends Controller
         // dd($categories[0]['name']);
         // dd($brand['id']);
         // dd($product['brand_id']);
+
+        $admin = Auth::user(); // Lấy thông tin admin đang đăng nhập
+        $adminId = $admin->id; 
+        $adminName = $admin->name;
+        
+        $actionData = [
+            'admin_id' => $adminId,
+            'admin_name' => $adminName,
+        ];
+        
+        // Ghi lại log hành động của admin
+        $this->logService->logAdminAction('edit_product', json_encode($actionData));
+        
         return view('Admin.product.product-edit', ['product' => $product, 'brands' => $brands, 'categories' => $categories]);
     }
 
