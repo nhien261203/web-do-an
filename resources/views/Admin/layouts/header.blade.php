@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Admin - DuogBachMobile</title>
+    <title>Admin - NhomNhom Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard (CodeLean) created using build-in elements and components.">
 
@@ -86,7 +86,7 @@
                                                                     <img width="42" class="rounded-circle" src="assets/images/avatars/avt.jpg" alt="">
                                                                 </div>
                                                                 <div class="widget-content-left">
-                                                                    <div class="widget-heading">DuogBachDev</div>
+                                                                    <div class="widget-heading">NhomNhom Shop</div>
                                                                     <!-- <div class="widget-subheading opacity-8">A short
                                                                         profile description</div> -->
                                                                 </div>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading"> DuogBachDev </div>
+                                    <div class="widget-heading"> NhomNhom Shop </div>
                                     <div class="widget-subheading"> Manager </div>
                                 </div>
                             </div>

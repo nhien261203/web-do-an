@@ -60,20 +60,6 @@
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="password" class="col-md-3 text-md-right col-form-label">Password</label>
-                            <div class="col-md-9 col-xl-8">
-                                <input name="password" id="password" placeholder="Password" type="password" class="form-control" value="">
-                            </div>
-                        </div>
-
-                        <div class="position-relative row form-group">
-                            <label for="password_confirmation" class="col-md-3 text-md-right col-form-label">Confirm Password</label>
-                            <div class="col-md-9 col-xl-8">
-                                <input name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" type="password" class="form-control" value="">
-                            </div>
-                        </div>
-
-                        <div class="position-relative row form-group">
                             <label for="company_name" class="col-md-3 text-md-right col-form-label">
                                 Company Name
                             </label>

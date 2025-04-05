@@ -36,7 +36,7 @@
                 <div class="card-header">
                     <form method="get">
                         <div class="input-group">
-                            <input type="search" name="search" id="search" placeholder="Tìm kiếm ở đây nek ???" class="form-control">
+                            <input type="search" name="search" id="search" placeholder="Tìm kiếm thông tin....." class="form-control">
                             <span class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-search"></i>&nbsp;
@@ -45,13 +45,6 @@
                             </span>
                         </div>
                     </form>
-
-                    <div class="btn-actions-pane-right">
-                        <div role="group" class="btn-group-sm btn-group">
-                            <button class="btn btn-focus">This week</button>
-                            <button class="active btn btn-focus">Anytime</button>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Thông báo thành công -->
@@ -80,7 +73,7 @@
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-3">
                                                 <div class="widget-content-left">
-                                                    <img width="500" class="" data-toggle="tooltip" title="Ảnh Slider" data-placement="bottom" src="/admin/assets/images/sliders/{{$slider->path ?? 'default-avatar.png'}}" alt="DuogBachDev">
+                                                    <img width="500" class="" data-toggle="tooltip" title="Ảnh Slider" data-placement="bottom" src="/admin/assets/images/sliders/{{$slider->path ?? 'default-avatar.png'}}" alt="NhomNhom Shop">
                                                 </div>
                                             </div>
                                         </div>

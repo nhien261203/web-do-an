@@ -21,7 +21,7 @@
                 <div class="single-banner">
                     <img src="./img/banner-1.jpg" alt="">
                     <div class="inner-text">
-                        <h4>Điện thoại</h4>
+                        <h4>Quần áo nam</h4>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="single-banner">
                     <img src="./img/banner-2.jpg" alt="">
                     <div class="inner-text">
-                        <h4>Laptop</h4>
+                        <h4>Quần áo nữ</h4>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="single-banner">
                     <img src="./img/banner-3.jpg" alt="">
                     <div class="inner-text">
-                        <h4>Máy tính bảng</h4>
+                        <h4>Phụ kiện</h4>
                     </div>
                 </div>
             </div>
@@ -46,13 +46,13 @@
 </div>
 <!-- Banner Section End -->
 
-<!-- Women Banner Section Begin -->
+<!-- Women Banner Section - Phone Products UI -->
 <section class="women-banner spad">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
                 <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
-                    <h2>Điện thoại</h2>
+                    <h2>Quần áo nữ</h2>
                     <a href="/shop">Khám Phá Thêm</a>
                 </div>
             </div>
@@ -61,15 +61,17 @@
                 <div class="filter-control">
                     <ul>
                         <li class="active item" data-tag="*" data-category="phone">ALL</li>
-                        <li class="item" data-tag=".Apple" data-category="phone">IPHONE</li>
-                        <li class="item" data-tag=".Samsung" data-category="phone">SAMSUNG</li>
-                        <li class="item" data-tag=".Oppo" data-category="phone">OPPO</li>
-                        <li class="item" data-tag=".phukien" data-category="phone">PHỤ KIỆN</li>
+                        <li class="item" data-tag=".Quần-nam" data-category="phone">Quần nam</li>
+                        <li class="item" data-tag=".Áo-nam" data-category="phone">Áo nam</li>
+                        <li class="item" data-tag=".Phụ-kiện-nam" data-category="phone">Phụ kiện nam</li>
                     </ul>
                 </div>
                 <div class="product-slider owl-carousel phone">
                     @foreach($phoneProducts as $phoneProduct)
-                    <div class="product-item item {{$phoneProduct->tag}}">
+                    @php
+                    $categoryTag = $categoryTagMapping[$phoneProduct->product_category_id] ?? '';
+                    @endphp
+                    <div class="product-item item {{ $categoryTag }}">
                         <div class="pi-pic">
                             <img src="/admin/assets/images/products/{{$phoneProduct->productImage[0]->path ?? ''}}" alt="">
 
@@ -86,16 +88,17 @@
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="category-name">{{$phoneProduct->tag}}</div>
+                            <div class="category-name">{{ str_replace('-', ' ', $categoryTag) }}</div>
                             <a href="/shop/product-detail/{{$phoneProduct->id}}">
                                 <h5>{{$phoneProduct->name}}</h5>
                             </a>
+                            <!-- For phoneProducts section -->
                             <div class="product-price">
                                 @if($phoneProduct->discount != null)
-                                ${{ $phoneProduct->discount }}
-                                <span>${{ $phoneProduct->price }}</span>
+                                {{ number_format($phoneProduct->discount, 0, ',', '.') }} đ
+                                <span>{{ number_format($phoneProduct->price, 0, ',', '.') }} đ</span>
                                 @else
-                                ${{ $phoneProduct->price }}
+                                {{ number_format($phoneProduct->price, 0, ',', '.') }} đ
                                 @endif
                             </div>
                         </div>
@@ -108,41 +111,6 @@
 </section>
 <!-- Women Banner Section End -->
 
-<!-- Deal Of The Week Section Begin -->
-<!-- <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
-    <div class="container">
-        <div class="col-lg-6 text-center">
-            <div class="section-title">
-                <h2>Sale Of The Week</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque aperiam enim repellat nostrum
-                    illum? Error itaque saepe aspernatur voluptatum nihil enim, assumenda, voluptates quia quae
-                    deserunt, consequatur consequuntur eligendi. Itaque.</p>
-                <div class="product-price">$35.00<span>/ HanBag</span></div>
-            </div>
-            <div class="countdown-timer" id="countdown">
-                <div class="cd-item">
-                    <span>56</span>
-                    <p>Days</p>
-                </div>
-                <div class="cd-item">
-                    <span>12</span>
-                    <p>Hrs</p>
-                </div>
-                <div class="cd-item">
-                    <span>40</span>
-                    <p>Mins</p>
-                </div>
-                <div class="cd-item">
-                    <span>52</span>
-                    <p>Secs</p>
-                </div>
-            </div>
-            <a href="" class="primary-btn">Shop Now</a>
-        </div>
-    </div>
-</section> -->
-<!-- Deal Of The Week Section End -->
-
 <!-- Man Banner Section Begin -->
 <section class="man-banner spad">
     <div class="container-fluid">
@@ -151,15 +119,17 @@
                 <div class="filter-control">
                     <ul>
                         <li class="active item" data-tag="*" data-category="laptop">ALL</li>
-                        <li class="item" data-tag=".Acer" data-category="laptop">ACER</li>
-                        <li class="item" data-tag=".Lenovo" data-category="laptop">LENOVO</li>
-                        <li class="item" data-tag=".HP" data-category="laptop">HP</li>
-                        <li class="item" data-tag=".PHUKIEN" data-category="laptop">PHỤ KIỆN</li>
+                        <li class="item" data-tag=".Quần-nữ" data-category="laptop">Quần nữ</li>
+                        <li class="item" data-tag=".Áo-nữ" data-category="laptop">Áo nữ</li>
+                        <li class="item" data-tag=".Phụ-kiện-nữ" data-category="laptop">Phụ kiện nữ</li>
                     </ul>
                 </div>
                 <div class="product-slider owl-carousel laptop">
                     @foreach($laptopProducts as $laptopProduct)
-                    <div class="product-item item {{$laptopProduct->tag}}">
+                    @php
+                    $categoryTag = $categoryTagMapping[$laptopProduct->product_category_id] ?? '';
+                    @endphp
+                    <div class="product-item item {{ $categoryTag }}">
                         <div class="pi-pic">
                             <img src="/admin/assets/images/products/{{$laptopProduct->productImage[0]->path ?? ''}}" alt="">
 
@@ -176,16 +146,16 @@
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="category-name">{{$laptopProduct->tag}}</div>
+                            <div class="category-name">{{ str_replace('-', ' ', $categoryTag) }}</div>
                             <a href="/shop/product-detail/{{$laptopProduct->id}}">
                                 <h5>{{$laptopProduct->name}}</h5>
                             </a>
                             <div class="product-price">
                                 @if($laptopProduct->discount != null)
-                                ${{ $laptopProduct->discount }}
-                                <span>${{ $laptopProduct->price }}</span>
+                                {{ number_format($laptopProduct->discount, 0, ',', '.') }} đ
+                                <span>{{ number_format($laptopProduct->price, 0, ',', '.') }} đ</span>
                                 @else
-                                ${{ $laptopProduct->price }}
+                                {{ number_format($laptopProduct->price, 0, ',', '.') }} đ
                                 @endif
                             </div>
                         </div>
@@ -195,144 +165,19 @@
             </div>
             <div class="col-lg-3 offset-lg-1">
                 <div class="product-large set-bg" data-setbg="img/products/man-large.jpg">
-                    <h2>Laptop</h2>
+                    <h2>Quần áo nam</h2>
                     <a href="/shop">Khám Phá Thêm</a>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
-<!-- Man Banner Section End -->
 
-<!-- Instagram Section Begin -->
-<!-- <div class="instagram-photo">
-    <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
-        <div class="inside-text">
-            <i class="ti-instagram"></i>
-            <h5><a href="#">DuogBachDev</a></h5>
-        </div>
-    </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-2.jpg">
-        <div class="inside-text">
-            <i class="ti-instagram"></i>
-            <h5><a href="#">DuogBachDev</a></h5>
-        </div>
-    </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-3.jpg">
-        <div class="inside-text">
-            <i class="ti-instagram"></i>
-            <h5><a href="#">DuogBachDev</a></h5>
-        </div>
-    </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-4.jpg">
-        <div class="inside-text">
-            <i class="ti-instagram"></i>
-            <h5><a href="#">DuogBachDev</a></h5>
-        </div>
-    </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-5.jpg">
-        <div class="inside-text">
-            <i class="ti-instagram"></i>
-            <h5><a href="#">DuogBachDev</a></h5>
-        </div>
-    </div>
-    <div class="insta-item set-bg" data-setbg="img/insta-6.jpg">
-        <div class="inside-text">
-            <i class="ti-instagram"></i>
-            <h5><a href="#">DuogBachDev</a></h5>
-        </div>
-    </div>
-</div> -->
-<!-- Instagram Section End -->
+
 
 <!-- Latest Blog Section Begin -->
 <section class="latest-blog spad">
     <div class="container">
-        <!-- <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Tin Tức</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-latest-blog">
-                    <img src="./img/latest-1.jpg" alt="">
-                    <div class="latest-text">
-                        <div class="tag-list">
-                            <div class="tag-item">
-                                <i class="fa fa-calendar-o"></i>
-                                May 4, 2023
-                            </div>
-                            <div class="tag-item">
-                                <i class="fa fa-comment-o"></i>
-                                5
-                            </div>
-                        </div>
-                        <a href="">
-                            <h4>The Best Street Style From Lodon DuogBachDev</h4>
-                        </a>
-                        <p>
-                            Các sản phẩm đến từ thương hiệu Apple luôn chiếm trọn niềm yêu thích của mình từ cái
-                            nhìn đầu tiên. Và Hoàng Hà Mobile là nơi Jun Vũ tin tưởng nhất để mua sắm, với hơn 100
-                            chi nhánh trên toàn quốc.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-latest-blog">
-                    <img src="./img/latest-2.jpg" alt="">
-                    <div class="latest-text">
-                        <div class="tag-list">
-                            <div class="tag-item">
-                                <i class="fa fa-calendar-o"></i>
-                                May 4, 2023
-                            </div>
-                            <div class="tag-item">
-                                <i class="fa fa-comment-o"></i>
-                                5
-                            </div>
-                        </div>
-                        <a href="">
-                            <h4>The Best Street Style From Lodon DuogBachDev</h4>
-                        </a>
-                        <p>
-                            Các sản phẩm đến từ thương hiệu Apple luôn chiếm trọn niềm yêu thích của mình từ cái
-                            nhìn đầu tiên. Và Hoàng Hà Mobile là nơi Jun Vũ tin tưởng nhất để mua sắm, với hơn 100
-                            chi nhánh trên toàn quốc.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-latest-blog">
-                    <img src="./img/latest-3.jpg" alt="">
-                    <div class="latest-text">
-                        <div class="tag-list">
-                            <div class="tag-item">
-                                <i class="fa fa-calendar-o"></i>
-                                May 4, 2023
-                            </div>
-                            <div class="tag-item">
-                                <i class="fa fa-comment-o"></i>
-                                5
-                            </div>
-                        </div>
-                        <a href="">
-                            <h4>The Best Street Style From Lodon DuogBachDev</h4>
-                        </a>
-                        <p>
-                            Các sản phẩm đến từ thương hiệu Apple luôn chiếm trọn niềm yêu thích của mình từ cái
-                            nhìn đầu tiên. Và Hoàng Hà Mobile là nơi Jun Vũ tin tưởng nhất để mua sắm, với hơn 100
-                            chi nhánh trên toàn quốc.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="benefit-items">
             <div class="row">
                 <div class="col-lg-4">

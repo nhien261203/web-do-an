@@ -47,7 +47,7 @@ class VNPay
         $vnp_Amount = $data['vnp_Amount'] * 100;
         $vnp_Locale = 'vn'; //Ngôn ngữ tiếng việt
         //        $vnp_BankCode = $_POST['bank_code'];
-        //        $vnp_BankCode = 'NCB';
+        $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 
         $inputData = array(
@@ -91,7 +91,9 @@ class VNPay
         }
 
         $returnData = array(
-            'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+            'code' => '00',
+            'message' => 'success',
+            'data' => $vnp_Url
         );
 
         //echo json_encode($returnData);

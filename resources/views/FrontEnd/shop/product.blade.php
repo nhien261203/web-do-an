@@ -47,27 +47,15 @@
                             <div class="pd-title">
                                 <span>{{$product->tag}}</span>
                                 <h3>{{$product->name}}</h3>
-
-                                <!-- Có thể bỏ qua -->
-                                <a href="/" class="heart-icon"><i class="icon_heart_alt"></i></a>
                             </div>
-                            <!-- Đánh giá này sẽ bỏ qua -->
-                            <!-- <div class="pd-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>(5)</span>
-                            </div> -->
                             <div class="pd-desc">
                                 <p>{{$product->content}}</p>
                                 <h4>
                                     @if($product->discount != null)
-                                    ${{ $product->discount }}
-                                    <span>${{ $product->price }}</span>
+                                    {{ number_format($product->discount, 0, ',', '.') }} đ
+                                    <span>{{ number_format($product->price, 0, ',', '.') }} đ</span>
                                     @else
-                                    ${{ $product->price }}
+                                    {{ number_format($product->price, 0, ',', '.') }} đ
                                     @endif
                                 </h4>
                             </div>
@@ -87,10 +75,8 @@
                                 <div class="sc-item">
                                     <input type="radio" id="{{ 'size-' . $size->id }}" name="product_size" value="{{ $size->size }}">
                                     <label for="{{ 'size-' . $size->id }}">
-                                        @if ($size->size == 1)
-                                        {{$size->size}}T
-                                        @else
-                                        {{$size->size}}GB
+                                        @if ($size->size != null)
+                                        {{$size->size}}
                                         @endif
                                     </label>
                                 </div>
@@ -114,9 +100,9 @@
                             <div class="pd-share">
                                 <div class="p-code">Sku : {{$product->sku}}</div>
                                 <div class="pd-social">
-                                    <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-facebook"></i></a>
-                                    <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-twitter-alt"></i></a>
-                                    <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-linkedin"></i></a>
+                                    <a href=""><i class="ti-facebook"></i></a>
+                                    <a href=""><i class="ti-twitter-alt"></i></a>
+                                    <a href=""><i class="ti-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -191,10 +177,8 @@
                                                 <td>
                                                     <div class="p-size">
                                                         @foreach ($product->productDetail as $size)
-                                                        @if ($size->size == 1)
-                                                        {{$size->size}}T
-                                                        @else
-                                                        {{$size->size}}GB
+                                                        @if ($size->size != null)
+                                                        {{$size->size}}
                                                         @endif
                                                         @endforeach
                                                     </div>

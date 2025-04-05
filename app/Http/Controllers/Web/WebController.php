@@ -10,25 +10,57 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-    //
+    /**
+     * Display the homepage with products organized by categories
+     */
     public function index()
     {
-        // Lấy danh sách các sản phẩm thuộc danh mục "Điện thoại" (sử dụng product_category_id)
-        $phoneCategoryId = 1; // Thay thế bằng product_category_id của "Điện thoại"
-        $phoneProducts = Product::where('product_category_id', $phoneCategoryId)->get();
-
-        // Lấy danh sách các sản phẩm thuộc danh mục "Laptop" (sử dụng product_category_id)
-        $laptopCategoryId = 2; // Thay thế bằng product_category_id của "Laptop"
-        $laptopProducts = Product::where('product_category_id', $laptopCategoryId)->get();
         $categories = Category::all();
+
+        $menClothingCategories = Category::whereIn('name', ['Quần nam', 'Áo nam', 'Phụ kiện nam'])
+            ->pluck('id')
+            ->toArray();
+
+        $womenClothingCategories = Category::whereIn('name', ['Quần nữ', 'Áo nữ', 'Phụ kiện nữ'])
+            ->pluck('id')
+            ->toArray();
+
+        $phoneProducts = Product::whereIn('product_category_id', $menClothingCategories)
+            ->with('productImage')
+            ->get();
+
+        $laptopProducts = Product::whereIn('product_category_id', $womenClothingCategories)
+            ->with('productImage')
+            ->get();
+
         $sliders = Slider::all();
-        return view('FrontEnd.index', ['phoneProducts' => $phoneProducts, 'laptopProducts' => $laptopProducts, 'categories' => $categories, 'sliders' => $sliders]);
+
+        $categoryTagMapping = [];
+        foreach ($categories as $category) {
+            $categoryTagMapping[$category->id] = str_replace(' ', '-', $category->name);
+        }
+
+        return view('FrontEnd.index', [
+            'phoneProducts' => $phoneProducts,
+            'laptopProducts' => $laptopProducts,
+            'categories' => $categories,
+            'sliders' => $sliders,
+            'categoryTagMapping' => $categoryTagMapping
+        ]);
     }
+
+    /**
+     * Display the FAQ page
+     */
     public function faq()
     {
         $categories = Category::all();
         return view('FrontEnd/faq/faq', ['categories' => $categories]);
     }
+
+    /**
+     * Display the contact page
+     */
     public function contact()
     {
         $categories = Category::all();

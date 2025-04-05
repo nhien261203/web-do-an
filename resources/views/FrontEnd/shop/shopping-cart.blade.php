@@ -50,7 +50,7 @@
                                 <td class="cart-title first-row">
                                     <h5>{{ $cart->name }}</h5>
                                 </td>
-                                <td class="p-price first-row">${{ number_format($cart->price, 2) }}</td>
+                                <td class="p-price first-row">{{ number_format($cart->price, 0, ',', '.') }} đ</td>
                                 <td class="qua-col first-row">
                                     <div class="quantity">
                                         <div class="pro-qty">
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="total-price first-row">${{ number_format($cart->price * $cart->qty , 2) }}</td>
+                                <td class="total-price first-row">{{ number_format($cart->price * $cart->qty, 0, ',', '.') }} đ</td>
                                 <td class="close-td first-row">
                                     <i onclick="removeCart('{{ $cart->rowId }}')" class="ti-close"></i>
                                 </td>
@@ -83,11 +83,16 @@
                             </form>
                         </div>
                     </div>
+                    @php
+                    $cleanTotal = str_replace(['$', ','], '', $total);
+                    $cleanSubtotal = str_replace(['$', ','], '', $subtotal);
+                    @endphp
+
                     <div class="col-lg-4 offset-lg-4">
                         <div class="proceed-checkout">
                             <ul>
-                                <li class="subtotal">Subtotal: <span>${{ $total }}</span></li>
-                                <li class="cart-total">Total: <span>${{ $subtotal }}</span></li>
+                                <li class="subtotal">Subtotal: <span>{{ number_format((float)$cleanTotal, 0, ',', '.') }} VND</span></li>
+                                <li class="cart-total">Total: <span>{{ number_format((float)$cleanSubtotal, 0, ',', '.') }} VND</span></li>
                             </ul>
                             <a href="/checkout" class="proceed-btn">Tiến hành thanh toán</a>
                         </div>

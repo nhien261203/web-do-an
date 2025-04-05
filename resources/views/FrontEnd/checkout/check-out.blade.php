@@ -94,26 +94,18 @@
                                 @foreach ($carts as $cart)
                                 <li class="fw-normal">
                                     {{ $cart->name }} x {{ $cart->qty }}
-                                    <span>${{ $cart->price * $cart->qty }}</span>
+                                    <span>{{ $cart->price * $cart->qty }}</span>
                                 </li>
                                 @endforeach
 
-                                <li class="fw-normal">Subtotal <span>${{ $subtotal }}</span></li>
-                                <li class="total-price">Total <span>${{ $total }}</span></li>
+                                <li class="fw-normal">Subtotal <span>{{ $subtotal }}</span></li>
+                                <li class="total-price">Total <span>{{ $total }}</span></li>
                             </ul>
                             <div class="payment-check">
                                 <div class="pc-item">
                                     <label for="pc-check">
                                         Thanh toán sau
                                         <input type="radio" name="payment_type" value="pay_later" id="pc-check" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-
-                                <div class="pc-item">
-                                    <label for="pc-paypal">
-                                        Thanh toán online
-                                        <input type="radio" name="payment_type" value="online_payment" id="pc-paypal">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>

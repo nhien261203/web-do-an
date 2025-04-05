@@ -39,13 +39,6 @@
                             </span>
                         </div>
                     </form>
-
-                    <div class="btn-actions-pane-right">
-                        <div role="group" class="btn-group-sm btn-group">
-                            <button class="btn btn-focus">This week</button>
-                            <button class="active btn btn-focus">Anytime</button>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="table-responsive">
@@ -69,7 +62,7 @@
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-3">
                                                 <div class="widget-content-left">
-                                                    <img style="height: 60px;" data-toggle="tooltip" title="Image" data-placement="bottom" src="/admin/assets/images/products/{{ $order->orderDetails[0]->product->productImage[0]->path ?? '' }}" alt="DuogBachDev">
+                                                    <img style="height: 60px;" data-toggle="tooltip" title="Image" data-placement="bottom" src="/admin/assets/images/products/{{ $order->orderDetails[0]->product->productImage[0]->path ?? '' }}" alt="NhomNhom Shop">
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">

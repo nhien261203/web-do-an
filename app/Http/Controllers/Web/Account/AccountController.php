@@ -152,6 +152,5 @@ class AccountController extends Controller
         $user->save();
         $categories = Category::all();
         return view('FrontEnd.account.changepass.index', ['user' => $user, 'categories' => $categories]);
-        // dd('duogbachdev');
     }
 }

@@ -27,17 +27,7 @@
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="product-show-option">
                     <div class="row">
-                        <div class="col-lg-7 col-md-7">
-                            <div class="select-option">
-                                <select class="sorting" name="" id="">
-                                    <option value="">Default Sorting</option>
-                                </select>
-                                <select class="p-show" name="" id="">
-                                    <option value="">Show</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 col-md-5 text-right">
+                        <div class="col-lg-12 col-md-12 text-right">
                             <p>Hiển thị {{ $startResult }} - {{ $endResult }} sản phẩm</p>
                         </div>
                     </div>
@@ -69,10 +59,10 @@
                                     </a>
                                     <div class="product-price">
                                         @if($product->discount != null)
-                                        ${{ $product->discount }}
-                                        <span>${{ $product->price }}</span>
+                                        {{ number_format($product->discount, 0, ',', '.') }} đ
+                                        <span>{{ number_format($product->price, 0, ',', '.') }} đ</span>
                                         @else
-                                        ${{ $product->price }}
+                                        {{ number_format($product->price, 0, ',', '.') }} đ
                                         @endif
                                     </div>
                                 </div>

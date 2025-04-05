@@ -36,7 +36,7 @@
                 <div class="card-header">
                     <form method="get">
                         <div class="input-group">
-                            <input type="search" name="search" id="search" placeholder="Tìm kiếm ở đây nek ???" class="form-control">
+                            <input type="search" name="search" id="search" placeholder="Tìm kiếm thông tin....." class="form-control">
                             <span class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-search"></i>&nbsp;
@@ -45,13 +45,6 @@
                             </span>
                         </div>
                     </form>
-
-                    <div class="btn-actions-pane-right">
-                        <div role="group" class="btn-group-sm btn-group">
-                            <button class="btn btn-focus">This week</button>
-                            <button class="active btn btn-focus">Anytime</button>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Thông báo thành công -->
@@ -82,7 +75,7 @@
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-3">
                                                 <div class="widget-content-left">
-                                                    <img width="40" class="rounded-circle" data-toggle="tooltip" title="Ảnh Avatar" data-placement="bottom" src="./assets/images/user/{{$user->avatar ?? 'default-avatar.png'}}" alt="DuogBachDev">
+                                                    <img width="40" class="rounded-circle" data-toggle="tooltip" title="Ảnh Avatar" data-placement="bottom" src="./assets/images/user/{{$user->avatar ?? 'default-avatar.png'}}" alt="NhomNhom Shop">
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
@@ -104,7 +97,7 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="/quantri/user/detail/{{$user->id}}" class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                        Details
+                                        Chi tiết
                                     </a>
                                     <a href="/quantri/user/edit/{{$user->id}}" data-toggle="tooltip" title="Edit" data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
                                         <span class="btn-icon-wrapper opacity-8">

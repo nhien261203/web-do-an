@@ -27,7 +27,7 @@
                     {{session("alert")}}
                 </h4>
                 @endif
-                <a href="/" class="primary-btn mt-5">Tiếp tục mua sắm nèo</a>
+                <a href="/" class="primary-btn mt-5">Tiếp tục mua sắm</a>
             </div>
         </div>
     </div>

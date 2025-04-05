@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <title>@yield('title') | DuogBachDev</title>
+    <title>@yield('title') | NhomNhom Shop</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -40,11 +40,11 @@
                 <div class="ht-left">
                     <div class="mail-service">
                         <i class="fa fa-evenlope"></i>
-                        duogbachdev@gmail.com.
+                        nhomnhomshop@gmail.com.
                     </div>
                     <div class="phone-service">
                         <i class="fa fa-phone"></i>
-                        +84 35.791.8298
+                        +84 12.345.678
                     </div>
                 </div>
 
@@ -68,10 +68,10 @@
                         </select>
                     </div>
                     <div class="top-social">
-                        <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-facebook"></i></a>
-                        <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-twitter-alt"></i></a>
-                        <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-linkedin"></i></a>
-                        <a href="https://donate-duogbachdev.vercel.app/"><i class="ti-pinterest"></i></a>
+                        <a href="/"><i class="ti-facebook"></i></a>
+                        <a href="/"><i class="ti-twitter-alt"></i></a>
+                        <a href="/"><i class="ti-linkedin"></i></a>
+                        <a href="/"><i class="ti-pinterest"></i></a>
                     </div>
                 </div>
             </div>
@@ -88,24 +88,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7">
-                        <div class="advanced-search">
-                            <button type="button" class="category-btn">Tất cả danh mục</button>
-                            <div class="input-group">
-                                <input type="text" name="" id="" placeholder="Bạn cần tìm kiếm cái gì ?">
-                                <button type="button"><i class="ti-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 text-right">
+                    <div class="col-lg-10 col-md-1010 text-right">
                         <ul class="nav-right">
-                            <!-- Bỏ -->
-                            <!-- <li class="heart-icon">
-                                <a href="#">
-                                    <i class="icon_heart_alt"></i>
-                                    <span>1</span>
-                                </a>
-                            </li> -->
                             <li class="cart-icon">
                                 <a href="/cart">
                                     <i class="icon_bag_alt"></i>
@@ -125,7 +109,7 @@
 
                                                     <td class="si-text">
                                                         <div class="product-selected">
-                                                            <p>${{ $cart->price }} x {{ $cart->qty }}</p>
+                                                            <p>{{ number_format($cart->price, 0, ',', '.') }} x {{ number_format($cart->qty, 0, ',', '.') }} đ</p>
                                                             <h6>{{ $cart->name }}</h6>
                                                         </div>
                                                     </td>
@@ -140,20 +124,26 @@
 
                                     <div class="select-total">
                                         <span>Total : </span>
-                                        <h5>${{ Cart::total() }}</h5>
+                                        <h5>
+                                            @php
+                                            $total = str_replace(['$', ','], '', Cart::total());
+                                            echo number_format((float)$total, 0, ',', '.') . ' đ';
+                                            @endphp
+                                        </h5>
                                     </div>
 
                                     <div class="select-button">
                                         <a href="/cart" class="primary-btn view-card">Xem Giỏ Hàng</a>
-                                        <!-- <form action="" method="post">
-                                            @csrf
-                                            <button class="primary-btn checkout-btn">Thanh Toán</button>
-                                        </form> -->
                                         <a href="/checkout" class="primary-btn checkout-btn">Thanh Toán</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">${{ Cart::total() }}</li>
+                            <li class="cart-price">
+                                @php
+                                $total = str_replace(['$', ','], '', Cart::total());
+                                echo number_format((float)$total, 0, ',', '.') . ' đ';
+                                @endphp
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -166,7 +156,7 @@
                     <ul>
                         <li class="{{ (request()->segment(1) == '') ? 'active' : '' }}"><a href="/">Trang chủ</a></li>
                         <li class="{{ (request()->segment(1) == 'shop') ? 'active' : '' }}"><a href="/shop">Cửa hàng</a></li>
-                        <li class="{{ (request()->segment(1) == 'category') ? 'active' : '' }}"><a href="https://donate-duogbachdev.vercel.app/">Danh mục</a>
+                        <li class="{{ (request()->segment(1) == 'category') ? 'active' : '' }}"><a href="/">Danh mục</a>
                             <ul class="dropdown">
                                 @foreach($categories as $category)
                                 @if (!empty($category->name))
@@ -175,19 +165,13 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <li class="{{ (request()->segment(1) == 'blog') ? 'active' : '' }}"><a href="https://donate-duogbachdev.vercel.app/">Blog</a></li>
-                        <li class="{{ (request()->segment(1) == 'contact') ? 'active' : '' }}"><a href="https://donate-duogbachdev.vercel.app/">Liên hệ</a></li>
                         <li><a href="/">Pages</a>
                             <ul class="dropdown">
-                                <li class="{{ (request()->segment(1) == '/blog/blog-detail') ? 'active' : '' }}"><a href="/blog/blog-detail">Blog Details</a></li>
                                 <li class="{{ (request()->segment(1) == '/account/myorder') ? 'active' : '' }}"><a href="/account/myorder">My Order</a></li>
                                 <li class="{{ (request()->segment(1) == '/account/profile') ? 'active' : '' }}"><a href="/account/profile">My Profile</a></li>
                                 <li class="{{ (request()->segment(1) == '/account/changepass') ? 'active' : '' }}"><a href="/account/changepass">Change Password</a></li>
                                 <li class="{{ (request()->segment(1) == '/cart') ? 'active' : '' }}"><a href="/cart">Giỏ Hàng</a></li>
                                 <li class="{{ (request()->segment(1) == '/check-out') ? 'active' : '' }}"><a href="/checkout">Thanh Toán Đơn Hàng</a></li>
-                                <li class="{{ (request()->segment(1) == '/faq') ? 'active' : '' }}"><a href="/faq">Câu Hỏi Thường Gặp</a></li>
-                                <li class="{{ (request()->segment(1) == '/account/register') ? 'active' : '' }}"><a href="/account/register">Đăng Ký</a></li>
-                                <li class="{{ (request()->segment(1) == '/account/login') ? 'active' : '' }}"><a href="/account/login">Đăng Nhập</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -199,40 +183,6 @@
 
     {{-- body here --}}
     @yield('body')
-
-    <!-- Partner Logo Section Begin -->
-    <!-- <div class="partner-logo">
-        <div class="container">
-            <div class="logo-carousel owl-carousel">
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="./img/logo-carousel/logo-1.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="./img/logo-carousel/logo-2.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="./img/logo-carousel/logo-3.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="./img/logo-carousel/logo-4.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="./img/logo-carousel/logo-5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -248,13 +198,13 @@
                         <ul>
                             <li>1A. Linh Dam, Hoang Mai</li>
                             <li>Phone : +84 123.456.789</li>
-                            <li>Email : duogbachdev@gmail.com</li>
+                            <li>Email : nhomnhomshop@gmail.com</li>
                         </ul>
                         <div class="footer-social">
-                            <a href="https://donate-duogbachdev.vercel.app/"><i class="fa fa-facebook"></i></a>
-                            <a href="https://donate-duogbachdev.vercel.app/"><i class="fa fa-instagram"></i></a>
-                            <a href="https://donate-duogbachdev.vercel.app/"><i class="fa fa-twitter"></i></a>
-                            <a href="https://donate-duogbachdev.vercel.app/"><i class="fa fa-pinterest"></i></a>
+                            <a href="/"><i class="fa fa-facebook"></i></a>
+                            <a href="/"><i class="fa fa-instagram"></i></a>
+                            <a href="/"><i class="fa fa-twitter"></i></a>
+                            <a href="/"><i class="fa fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -262,10 +212,9 @@
                     <div class="footer-widget">
                         <h5>Thông tin</h5>
                         <ul>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Về chúng tôi</a></li>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Thủ tục thanh toán</a></li>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Liên hệ</a></li>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Serivius</a></li>
+                            <li><a href="/">Về chúng tôi</a></li>
+                            <li><a href="/">Thủ tục thanh toán</a></li>
+                            <li><a href="/">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -273,10 +222,10 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">My Account</a></li>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Liên hệ</a></li>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Giỏ hàng</a></li>
-                            <li><a href="https://donate-duogbachdev.vercel.app/">Cửa hàng</a></li>
+                            <li><a href="/">My Account</a></li>
+                            <li><a href="/">Liên hệ</a></li>
+                            <li><a href="/">Giỏ hàng</a></li>
+                            <li><a href="/">Cửa hàng</a></li>
                         </ul>
                     </div>
                 </div>
@@ -303,7 +252,7 @@
                             <script>
                                 document.write(new Date().getFullYear())
                             </script> All rights reserved | This
-                            template made width <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/duogbachdev" target="_blank">DuogBachDev</a>
+                            template made width <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/">NhomNhom Shop</a>
                         </div>
 
                         <div class="payment-pic">

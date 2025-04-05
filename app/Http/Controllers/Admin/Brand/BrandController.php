@@ -16,7 +16,7 @@ class BrandController extends Controller
     public function index(Request $request)
     {
         //
-        $perPage = 5; // Số lượng mục trên mỗi trang
+        $perPage = 10; // Số lượng mục trên mỗi trang
         $currentPage = request()->query('page', 1); // Lấy trang hiện tại từ query string, mặc định là trang 1
 
         // Lấy tổng số lượng người dùng trong cơ sở dữ liệu
