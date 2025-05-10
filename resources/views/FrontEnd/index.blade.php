@@ -18,14 +18,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4">
-                <div class="single-banner">
+                <div class="single-banner" onclick="window.location.href='/shop/filter/category/Điện thoại'">
                     <img src="./img/banner-1.jpg" alt="">
                     <div class="inner-text">
                         <h4>Điện Thoại</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" onclick="window.location.href='/shop/filter/category/Laptop'">
                 <div class="single-banner">
                     <img src="./img/banner-2.jpg" alt="">
                     <div class="inner-text">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" onclick="window.location.href='/shop/filter/category/Phụ kiện'">
                 <div class="single-banner">
                     <img src="./img/banner-3.jpg" alt="">
                     <div class="inner-text">
@@ -47,7 +47,7 @@
 <!-- Banner Section End -->
 
 <!-- Women Banner Section - Phone Products UI -->
-<section class="women-banner spad">
+{{-- <section class="women-banner spad">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
@@ -108,11 +108,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Women Banner Section End -->
 
 <!-- Man Banner Section Begin -->
-<section class="man-banner spad">
+{{-- <section class="man-banner spad">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8">
@@ -167,6 +167,67 @@
                 <div class="product-large set-bg" data-setbg="img/products/man-large.jpg">
                     <h2>Quần áo nam</h2>
                     <a href="/shop">Khám Phá Thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad">
+    <div class="container">
+        <div class="row">
+            {{-- <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                @include('FrontEnd.shop.components.produts-sidebar-filter')
+            </div> --}}
+            <div class="container">
+                <div class="product-show-option">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 text-right">
+                            <p>Hiển thị {{ $startResult }} - {{ $endResult }} sản phẩm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-list">
+                    <div class="row">
+                        @foreach($products as $product)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="product-item item {{$product->tag}}">
+                                <div class="pi-pic">
+                                    <img src="/admin/assets/images/products/{{ $product->productImage[0]->path ?? '' }}" alt="">
+
+                                    @if($product->discount != null)
+                                    <div class="sale pp-sale">Sale</div>
+                                    @endif
+                                    <div class="icon">
+                                        <i class="icon_heart_alt"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="javascript:addCart({{ $product->id }})"><i class="icon_bag_alt"></i></a></li>
+                                        <li class="quick-view"><a href="/shop/product-detail/{{$product->id}}">+ Xem chi tiết</a></li>
+                                        <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">{{$product->tag}}</div>
+                                    <a href="/shop/product-detail/{{$product->id}}">
+                                        <h5>{{$product->name}}</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        @if($product->discount != null)
+                                        {{ number_format($product->discount, 0, ',', '.') }} đ
+                                        <span>{{ number_format($product->price, 0, ',', '.') }} đ</span>
+                                        @else
+                                        {{ number_format($product->price, 0, ',', '.') }} đ
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="mt-5">
+                    {{ $products->links("pagination::bootstrap-4") }}
                 </div>
             </div>
         </div>
