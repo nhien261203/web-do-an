@@ -215,7 +215,12 @@
                                             <i class="metismenu-icon"></i>Danh sách action admin
                                         </a>
                                     </li>
-                                    
+                                    <li>
+                                        <a href="/quantri/blog" class="{{ (request()->segment(2) == 'logs') ? 'mm-active' : '' }}">
+                                            <i class="metismenu-icon"></i>Danh sách blog
+                                        </a>
+                                    </li>
+
                                 </ul>
                             </li>
                         </ul>

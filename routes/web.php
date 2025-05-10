@@ -123,7 +123,7 @@ Route::group(["prefix" => "/login", "middleware" => "checklogin"], function () {
 Route::group(['prefix' => '/quantri', "middleware" => "checkadmin"], function () {
     Route::get('/logout', [AdminController::class, "logout"]);
 
-    
+
     Route::group(['prefix' => '/dashboard'], function () {
         Route::get('/', [DashboardController::class, "index"]);
     });
@@ -195,4 +195,24 @@ Route::group(['prefix' => '/quantri', "middleware" => "checkadmin"], function ()
         Route::get('/edit/{id}', [OrderController::class, "edit"]);
         Route::post('/update/{id}', [OrderController::class, "update"]);
     });
+
+
+    Route::group(['prefix' => '/blog'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'index']);
+        Route::get('/create', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'create']);
+        Route::post('/store', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'store']);
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'edit']);
+        Route::post('/update/{id}', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'update']);
+        Route::post('/destroy/{id}', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'destroy']);
+    });
+
+    Route::prefix('blog')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'index'])->name('admin.blog.index');
+    Route::get('/create', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'create'])->name('admin.blog.create');
+    Route::post('/', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'store'])->name('admin.blog.store');
+    Route::get('/{blog}', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'show'])->name('admin.blog.show');
+    Route::get('/{blog}/edit', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'edit'])->name('admin.blog.edit');
+    Route::put('/{blog}', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'update'])->name('admin.blog.update');
+    Route::delete('/{blog}', [\App\Http\Controllers\Admin\Blog\BlogController::class, 'destroy'])->name('admin.blog.destroy');
+});
 });
