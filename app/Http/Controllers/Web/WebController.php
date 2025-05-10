@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -69,7 +70,7 @@ class WebController extends Controller
 
         // dd($categories);
         // Truyền các giá trị vào view
-        
+        $latestBlogs = Blog::latest()->take(3)->get();
 
         return view('FrontEnd.index', [
             // 'phoneProducts' => $phoneProducts,
@@ -82,7 +83,8 @@ class WebController extends Controller
             "endResult" => $endResult,
             "totalResults" => $totalUsers,
             "categories" => $categories,
-            "brands" => $brands
+            "brands" => $brands,
+            'latestBlogs' => $latestBlogs,
         ]);
     }
 

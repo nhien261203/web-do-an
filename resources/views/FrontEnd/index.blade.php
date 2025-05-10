@@ -229,6 +229,30 @@
                 <div class="mt-5">
                     {{ $products->links("pagination::bootstrap-4") }}
                 </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Bài viết mới nhất</h2>
+                        </div>
+                    </div>
+                    @foreach($latestBlogs as $blog)
+                    <div class="col-lg-4">
+                        <div class="blog-item">
+                            <div class="bi-pic">
+                                <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+                            </div>
+                            <div class="bi-text">
+                                <h4><strong>{{ $blog->title }}</strong></h4>
+                                <p>{{ Str::limit($blog->content, 100) }}</p>
+                                <a href="{{ route('blog.show', $blog->id) }}" class="read-more">
+                                    Đọc thêm <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
