@@ -21,7 +21,7 @@
                 <div class="single-banner">
                     <img src="./img/banner-1.jpg" alt="">
                     <div class="inner-text">
-                        <h4>Quần áo nam</h4>
+                        <h4>Điện Thoại</h4>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="single-banner">
                     <img src="./img/banner-2.jpg" alt="">
                     <div class="inner-text">
-                        <h4>Quần áo nữ</h4>
+                        <h4>Máy tính</h4>
                     </div>
                 </div>
             </div>

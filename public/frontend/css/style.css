@@ -859,8 +859,10 @@ ol {
 -----------------------*/
 
 .hero-items .single-hero-items {
-    height: 725px;
-    padding-top: 210px;
+    height: 400px; /* hoặc dùng media query để điều chỉnh */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-items .single-hero-items span {
@@ -4340,9 +4342,8 @@ ol {
         font-size: 12px;
     }
     .hero-items .single-hero-items {
-        padding: 110px 25px 80px;
-        height: auto;
-        background: left center;
+        height:300px;
+        
     }
     .hero-items .single-hero-items h1 {
         font-size: 40px;
