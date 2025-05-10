@@ -44,6 +44,12 @@ Route::group(["prefix" => "/"], function () {
     Route::get('/faq', [WebController::class, "faq"]);
     Route::get('/contact', [WebController::class, "contact"]);
 
+    //blog front end
+    Route::prefix('blog')->group(function () {
+        Route::get('/', [App\Http\Controllers\Web\Blog\BlogController::class, 'index'])->name('blog.index');
+        Route::get('/{blog}', [App\Http\Controllers\Web\Blog\BlogController::class, 'show'])->name('blog.show');
+    });
+
     Route::group(['prefix' => '/shop'], function () {
         Route::get('/', [ShopController::class, "index"]);
         Route::get('/product-detail/{id}', [ShopController::class, "show"]);

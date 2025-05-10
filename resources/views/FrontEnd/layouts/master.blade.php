@@ -157,6 +157,7 @@
                         <li class="{{ (request()->segment(1) == '') ? 'active' : '' }}"><a href="/">Trang chủ</a></li>
                         <li class="{{ (request()->segment(1) == 'shop') ? 'active' : '' }}"><a href="/shop">Cửa hàng</a></li>
                         <li class="{{ (request()->segment(1) == 'category') ? 'active' : '' }}"><a href="/">Danh mục</a>
+                        
                             <ul class="dropdown">
                                 @foreach($categories as $category)
                                 @if (!empty($category->name))
@@ -165,6 +166,7 @@
                                 @endforeach
                             </ul>
                         </li>
+                        <li class="{{ (request()->segment(1) == 'blog') ? 'active' : '' }}"><a href="/blog">Blog</a></li>
                         <li><a href="/">Pages</a>
                             <ul class="dropdown">
                                 <li class="{{ (request()->segment(1) == '/account/myorder') ? 'active' : '' }}"><a href="/account/myorder">My Order</a></li>
